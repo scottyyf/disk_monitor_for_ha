@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource-agent name="disk">
+	<version>1.0</version>
+	<longdesc lang="en">This wizard help you to setup an monitor on disk space
+	</longdesc>
+	<longdesc lang="zh_CN">分区挂载点百分比监控</longdesc>
+	<shortdesc lang="en">Monitor of disk space used in percent
+	</shortdesc>
+	<shortdesc lang="zh_CN">分区挂载点百分比监控</shortdesc>
+	<parameters>
+		<parameter name="mountpoint" unique="yes" required="yes" config="normal"
+		           critical="yes">
+			<longdesc lang="en">The mount point of disk
+			</longdesc>
+			<longdesc lang="zh_CN">被监控分区挂载点</longdesc>
+			<shortdesc lang="en">mountpoint</shortdesc>
+			<shortdesc lang="zh_CN">被监控挂载点</shortdesc>
+			<content type="string" default="" validate="shell_options_validate, first_parameter_is_abs_path"/>
+		</parameter>
+
+		<parameter name="percent" unique="yes" required="yes" config="normal"
+		           critical="yes">
+			<longdesc lang="en">
+				percent of disk to alarm
+			</longdesc>
+			<longdesc lang="zh_CN">
+				监控阀值
+			</longdesc>
+			<shortdesc lang="en">Threshold of disk percent</shortdesc>
+			<shortdesc lang="zh_CN">监控阀值</shortdesc>
+			<content type="integer" default="85"/>
+		</parameter>
+		<parameter name="check_env" unique="no" required="no" config="original" showlevel="1">
+			<longdesc lang="en">When resources are in a state of errors, and resources to support the environment inspection, check the running environment resources</longdesc>
+			<longdesc lang="zh_CN">当资源处于错误状态,并且资源支持环境检测时,检查资源运行环境</longdesc>
+			<shortdesc lang="en">Auto Reset Error by Env</shortdesc>
+			<shortdesc lang="zh_CN">环境恢复时重置错误</shortdesc>
+			<content type="boolean" default="yes" />
+		</parameter>
+		<parameter name="is_critical" unique="no" required="no" config="original" showlevel="1">
+			<longdesc lang="en">is the resource critical or not</longdesc>
+			<longdesc lang="zh_CN">资源是否是关键资源</longdesc>
+			<shortdesc lang="en">Critical Resource</shortdesc>
+			<shortdesc lang="zh_CN">关键资源</shortdesc>
+			<content type="boolean" default="no" />
+		</parameter>
+	</parameters>
+</resource-agent>
+
