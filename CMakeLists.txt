@@ -2,11 +2,14 @@ cmake_minimum_required (VERSION 3.12)
 project(disk_percent VERSION 1.0)
 
 
-install(FILES disk.py DESTINATION /opt/ha/dist-packages/pyagent/disk_percent)
-install(FILES meta-data.xml __init__.py DESTINATION /opt/ha/resource/resources/disk_percent/disk)
-install(FILES __init__.py DESTINATION /opt/ha/resource/resources/disk_percent)
+add_subdirectory(resource)
+add_subdirectory(src)
 
-set(CPACK_PACKAGING_INSTALL_PREFIX /opt/ha/)
+#set(CPACK_PACKAGING_INSTALL_PREFIX /opt/ha/)
+set(CPACK_GENERATOR RPM)
+set(CMAKE_INSTALL_PREFIX "/opt/ha")
+SET(CPACK_PACKAGING_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
+set(CPACK_RPM_PACKAGE_AUTOREQPROV " no")
 
 set(CPACK_RPM_COMPONENT_INSTALL ON)
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "SkybilityHA disk percent monitor resource for skybiltiyha 2.8")
