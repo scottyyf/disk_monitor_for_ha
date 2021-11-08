@@ -1,0 +1,1 @@
+* Fri Jul 09 2021 Tony Lip <yangyingfa@skybility.com> republish a resource for SkybilityHA 2.8

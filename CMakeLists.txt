@@ -3,11 +3,12 @@ project(disk_percent VERSION 1.0)
 
 set(CPACK_COMPONENTS_ALL ha)
 list(APPEND CPACK_COMPONENTS_ALL hadr)
+set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cpack)
 
 set(CPACK_GENERATOR RPM DEB)
 set(CMAKE_INSTALL_PREFIX "/opt/ha")
 SET(CPACK_PACKAGING_INSTALL_PREFIX ${CMAKE_INSTALL_PREFIX})
-set(CPACK_RPM_PACKAGE_AUTOREQPROV " no")
+set(CPACK_RPM_PACKAGE_AUTOREQPROV "no")
 
 set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}")
 set(CPACK_RPM_PACKAGE_RELEASE 1.1)
@@ -20,10 +21,15 @@ set(CPACK_PACKAGE_CONTACT "yangyingfa@skybility.com")
 set(CPACK_RPM_PACKAGE_URL "https://www.skybilityha.com/download/")
 set(CPACK_RPM_PACKAGE_DESCRIPTION "This is a disk space monitor script by yangyingfa@skybility.com")
 set(CPACK_RPM_PACKAGE_ARCHITECTURE "x86_64")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "SkybilityHA disk percent monitor resource for skybiltiyha 2.8")
+set(CPACK_PACKAGE_NAME "diskpercent")
+
+set(CPACK_RPM_COMPONENT_INSTALL ON)
+set(CPACK_DEB_COMPONENT_INSTALL ON)
 
 add_subdirectory(resource)
 add_subdirectory(src)
 add_subdirectory(hadr)
 
+include(cpackoption)
 include (CPack)
-
